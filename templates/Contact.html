@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Zenith Nexus</title>
     <link rel="stylesheet" href="/static/Contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -16,40 +17,83 @@
 
     <section class="contact-container">
         <div class="contact-card">
-            <h2>Get in Touch</h2>
+            <h2>Get in Touch <i class="fas fa-comments"></i></h2>
             <p>Have questions? Want to collaborate? Drop us a message below!</p>
 
             <form class="contact-form">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="name" placeholder=" " required>
+                    <label class="input-label">Your Name</label>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="email" placeholder=" " required>
+                    <label class="input-label">Your Email</label>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-comment-dots input-icon"></i>
+                    <textarea id="message" rows="5" placeholder=" " required></textarea>
+                    <label class="input-label">Your Message</label>
+                </div>
+
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
             </form>
 
             <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#" data-tooltip="Facebook">
+                    <i class="fab fa-facebook"></i>
+                    <div class="icon-wave"></div>
+                </a>
+                <a href="#" data-tooltip="Twitter">
+                    <i class="fab fa-twitter"></i>
+                    <div class="icon-wave"></div>
+                </a>
+                <a href="#" data-tooltip="Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <div class="icon-wave"></div>
+                </a>
+                <a href="#" data-tooltip="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                    <div class="icon-wave"></div>
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>Stay connected & grow with us!</p>
+        <p>Stay connected & grow with us! <i class="fas fa-heart"></i></p>
     </footer>
 
     <script>
-        // Typing Effect
-        const text = "We're here to help. Reach out anytime!";
+        // Enhanced Typing Effect with Punjabi Jutti
+        const text = "We're here to help. Reach out anytime! ✨";
         let i = 0;
         function typeEffect() {
             if (i < text.length) {
                 document.getElementById("typing-text").innerHTML += text.charAt(i);
                 i++;
                 setTimeout(typeEffect, 50);
+            } else {
+                // Add blinking cursor after animation
+                document.getElementById("typing-text").innerHTML += '<span class="blinking-cursor">|</span>';
             }
         }
+        
+        // Add hover effect to social icons
+        document.querySelectorAll('.contact-icons a').forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.transform = 'rotate(360deg) scale(1.2)';
+            });
+            icon.addEventListener('mouseout', () => {
+                icon.style.transform = 'rotate(0deg) scale(1)';
+            });
+        });
+
         window.onload = typeEffect;
     </script>
 
